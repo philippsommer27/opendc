@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useMemo, useState } from 'react'
-import { Layer } from 'react-konva/lib/ReactKonva'
+import { Layer } from 'react-konva'
 import HoverTile from '../elements/HoverTile'
 import { TILE_SIZE_IN_PIXELS } from '../MapConstants'
 import { useEffectRef } from '../../../../util/effect-ref'
