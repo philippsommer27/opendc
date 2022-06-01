@@ -62,3 +62,8 @@ include(":opendc-trace:opendc-trace-calcite")
 include(":opendc-trace:opendc-trace-tools")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+include("opendc-experiments-ee")
+include("opendc-experiments:ee")
+findProject(":opendc-experiments:ee")?.name = "ee"
+include("opendc-experiments:opendc-experiments-ee")
+findProject(":opendc-experiments:opendc-experiments-ee")?.name = "opendc-experiments-ee"

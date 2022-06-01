@@ -125,7 +125,7 @@ internal class BitbrainsResourceStateTableReader(private val partition: String, 
             COL_TIMESTAMP -> timestamp
             COL_CPU_COUNT -> getInt(index)
             COL_CPU_CAPACITY, COL_CPU_USAGE, COL_CPU_USAGE_PCT, COL_MEM_CAPACITY, COL_MEM_USAGE, COL_DISK_READ, COL_DISK_WRITE, COL_NET_RX, COL_NET_TX -> getDouble(index)
-            else -> throw IllegalArgumentException("Invalid column")
+            else -> throw IllegalArgumentException("Invalid column $index")
         }
     }
 
