@@ -43,5 +43,7 @@ dependencies {
     implementation(projects.opendcSimulator.opendcSimulatorCompute)
     implementation(projects.opendcCompute.opendcComputeSimulator)
     implementation(projects.opendcTrace.opendcTraceBitbrains)
+
+    implementation(libs.kotlin.logging)
 }
 
