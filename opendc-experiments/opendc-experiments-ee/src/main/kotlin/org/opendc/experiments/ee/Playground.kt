@@ -21,7 +21,7 @@ import java.util.*
 import kotlin.coroutines.coroutineContext
 import kotlin.random.Random
 
-fun main() {
+fun main(args : Array<String>) {
     val logger = KotlinLogging.logger {}
 
     val bitbrainsPath = "traces/bitbrains/fastStorage"
@@ -30,6 +30,11 @@ fun main() {
     val computeScheduler = createComputeScheduler("random", java.util.Random())
 
     val computeMonitor = ParquetComputeMonitor(File("output"), "partition", 4096)
+
+    logger.info {"INFO LEVEL"}
+    logger.warn { "WARN LEVEL" }
+    logger.error { "ERROR LEVEL" }
+    logger.debug { "DEBUG LEVEL" }
 
     try {
         runBlockingSimulation {
@@ -64,6 +69,8 @@ fun main() {
     } catch (e: Exception) {
         logger.error("Something went wrong...")
     }
+
+
 }
 
 fun makeExampleTop (): Topology {

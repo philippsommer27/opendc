@@ -45,5 +45,7 @@ dependencies {
     implementation(projects.opendcTrace.opendcTraceBitbrains)
 
     implementation(libs.kotlin.logging)
+    runtimeOnly(libs.log4j.slf4j)
+
 }
 
