@@ -26,8 +26,7 @@ package org.opendc.trace.conv
 /**
  * Identifier of the resource.
  */
-@JvmField
-public val RESOURCE_ID: String = "id"
+public const val RESOURCE_ID: String = "id"
 
 /**
  * The cluster to which the resource belongs.
