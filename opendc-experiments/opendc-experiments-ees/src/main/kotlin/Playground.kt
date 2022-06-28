@@ -13,14 +13,15 @@ import org.opendc.compute.workload.topology.apply
 import org.opendc.compute.workload.trace
 import org.opendc.experiments.capelin.topology.clusterTopology
 import org.opendc.simulator.core.runBlockingSimulation
+import writer.EEWriter
 import java.io.File
 import java.time.Duration
 import java.util.*
 
-fun main (args: Array<String>) {
+fun main(args: Array<String>) {
     val logger = KotlinLogging.logger() {}
 
-    val traceLoc = File("C:\\Users\\phili\\Documents\\University\\opendc\\traces")
+    val traceLoc = File("traces")
 
     val loader = ComputeWorkloadLoader(traceLoc)
 
@@ -31,9 +32,11 @@ fun main (args: Array<String>) {
 
     val workload = trace("solvinity")
 
-    val topology = clusterTopology(File("C:\\Users\\phili\\Documents\\University\\opendc\\traces\\topology\\topology.txt"))
+    val topology = clusterTopology(File("traces/topology/topology.txt"))
 
-    val outputPath = File("C:\\Users\\phili\\Documents\\University\\opendc\\output")
+    val outputPath = File("output/out.csv")
+
+    val writer = EEWriter(outputPath)
 
     runBlockingSimulation {
         val seeder = Random(0)
@@ -49,11 +52,7 @@ fun main (args: Array<String>) {
             clock,
             runnerService.service,
             servers,
-            ParquetComputeMonitor(
-                outputPath,
-                "partition",
-                bufferSize = 4096
-            ),
+            writer,
             exportInterval = Duration.ofMinutes(5)
         )
 
