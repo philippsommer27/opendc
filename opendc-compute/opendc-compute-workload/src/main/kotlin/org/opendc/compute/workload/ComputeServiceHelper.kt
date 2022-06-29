@@ -39,6 +39,7 @@ import java.time.Duration
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 import kotlin.math.max
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * Helper class to simulate VM-based workloads in OpenDC.

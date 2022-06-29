@@ -9,48 +9,38 @@ import org.opendc.compute.workload.telemetry.table.ServiceTableReader
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
+import java.nio.charset.StandardCharsets
 
 
 public class EEWriter(private val outputPath: File) : ComputeMonitor {
 
-    private val file = FileWriter(outputPath)
+    private val file = FileWriter(outputPath, StandardCharsets.UTF_8)
 
     private val buffer = BufferedWriter(file)
 
     private val csvPrinter = CSVPrinter(buffer, CSVFormat.DEFAULT)
 
     init {
-        csvPrinter.printRecord(headers)
+        csvPrinter.printRecord(header)
     }
 
     override fun record(reader: HostTableReader) {
         val entry = listOf(
-            reader.timestamp,
+            reader.timestamp.toEpochMilli(),
             reader.host.id,
             reader.powerTotal,
-            reader.powerUsage,
-            reader.cpuUsage,
-            reader.cpuUtilization
+            reader.powerUsage
         )
 
         csvPrinter.printRecord(entry)
     }
 
-
-    fun close() {
-        csvPrinter.close(true)
-    }
-
     private companion object {
-        val headers = listOf(
-            "Timestamp [ms]",
+        val header : List<String> = listOf(
+            "timestamp",
             "host_id",
-            "power_total [J]",
-            "power_usage [W]",
-            "cpu_usage",
-            "cpu_util"
+            "power_total",
+            "power_usage"
         )
     }
 }
-
-
