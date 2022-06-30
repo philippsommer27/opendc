@@ -28,8 +28,7 @@ public class EEWriter(private val outputPath: File) : ComputeMonitor {
         val entry = listOf(
             reader.timestamp.toEpochMilli(),
             reader.host.id,
-            reader.powerTotal,
-            reader.powerUsage
+            reader.powerTotal
         )
 
         csvPrinter.printRecord(entry)
@@ -39,8 +38,7 @@ public class EEWriter(private val outputPath: File) : ComputeMonitor {
         val header : List<String> = listOf(
             "timestamp",
             "host_id",
-            "power_total",
-            "power_usage"
+            "dc_power_total"
         )
     }
 }

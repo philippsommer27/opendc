@@ -53,7 +53,7 @@ fun main(args: Array<String>) {
             runnerService.service,
             servers,
             writer,
-            exportInterval = Duration.ofMinutes(5)
+            exportInterval = Duration.ofMinutes(15)
         )
 
         runnerService.use { runner ->
